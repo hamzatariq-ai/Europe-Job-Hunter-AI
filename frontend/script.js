@@ -1,0 +1,1 @@
+console.log("Europe Job Hunter AI Started");
