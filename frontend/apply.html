@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply for Job</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+background:#f4f6fb;
+font-family:Arial,sans-serif;
+}
+
+.container{
+max-width:800px;
+margin:40px auto;
+background:white;
+padding:30px;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,.1);
+}
+
+h1{
+text-align:center;
+margin-bottom:30px;
+}
+
+.input-group{
+margin-bottom:20px;
+}
+
+label{
+display:block;
+font-weight:bold;
+margin-bottom:8px;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:12px;
+border:1px solid #ccc;
+border-radius:8px;
+font-size:16px;
+}
+
+textarea{
+height:120px;
+resize:none;
+}
+
+button{
+width:100%;
+padding:15px;
+background:#4f46e5;
+color:white;
+font-size:18px;
+border:none;
+border-radius:10px;
+cursor:pointer;
+}
+
+button:hover{
+background:#372fcf;
+}
+
+.back{
+display:inline-block;
+margin-top:20px;
+text-decoration:none;
+font-weight:bold;
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+
+<h1>Apply For This Job</h1>
+
+<form action="success.html">
+
+<div class="input-group">
+<label>Full Name</label>
+<input type="text" required>
+</div>
+
+<div class="input-group">
+<label>Email Address</label>
+<input type="email" required>
+</div>
+
+<div class="input-group">
+<label>Phone Number</label>
+<input type="tel" required>
+</div>
+
+<div class="input-group">
+<label>Country</label>
+<select required>
+<option>Pakistan</option>
+<option>India</option>
+<option>Bangladesh</option>
+<option>Nepal</option>
+<option>Sri Lanka</option>
+</select>
+</div>
+
+<div class="input-group">
+<label>Upload CV</label>
+<input type="file" required>
+</div>
+
+<div class="input-group">
+<label>Cover Letter</label>
+<textarea placeholder="Write about yourself..."></textarea>
+</div>
+
+<button type="submit">
+Submit Application
+</button>
+
+</form>
+
+<a class="back" href="job-details.html">
+⬅ Back
+</a>
+
+</div>
+
+</body>
+</html>

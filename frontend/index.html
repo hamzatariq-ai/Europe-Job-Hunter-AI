@@ -3,18 +3,284 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Europe Job Hunter AI</title>
-
+    <title>Europe Job Hunter AI - Professional Dashboard</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-
 <body>
+    
+    <div class="global-loader" id="globalLoader">
+        <div class="loader-spinner"></div>
+        <p>Analyzing European Market Records...</p>
+    </div>
 
-    <h1>🚀 Europe Job Hunter AI</h1>
+    <div class="app-container">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <i class="fa-solid fa-passport brand-icon"></i>
+                <span>EuroHunter <span class="ai-badge">AI</span></span>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active"><i class="fa-solid fa-chart-pie"></i><span>Dashboard</span></a>
+                <a href="jobs.html" class="menu-item"><i class="fa-solid fa-briefcase"></i><span>AI Job Matcher</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-file-invoice"></i><span>CV Tailoring</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-id-card"></i><span>Visa Tracker</span></a>
+                <a href="#" class="menu-item"><i class="fa-solid fa-gear"></i><span>Settings</span></a>
+            </nav>
+        </aside>
 
-    <p>Project Started Successfully.</p>
+        <div class="main-content">
+            
+            <header class="top-nav">
+                <div class="nav-left">
+                    <button class="toggle-sidebar-btn" id="sidebarToggle" aria-label="Toggle Navigation Sidebar">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                    <div class="welcome-meta">
+                        <h1>Welcome back, Hunter</h1>
+                        <span class="live-indicator"><span class="pulse-dot"></span>Live AI Market Feed</span>
+                    </div>
+                </div>
+                
+                <div class="nav-right">
+                  <a href="login.html" style="text-decoration:none;">
+    <button style="padding:10px 18px;background:#4f46e5;color:white;border:none;border-radius:8px;cursor:pointer;">
+        Login
+    </button>
+</a>  
+                    <div class="nav-dropdown-wrapper language-selector">
+                        <button class="nav-action-btn" id="langDropdownBtn" aria-label="Select Language">
+                            <i class="fa-solid fa-globe"></i> <span class="lang-text">EN</span> <i class="fa-solid fa-chevron-down caret"></i>
+                        </button>
+                        <div class="dropdown-menu" id="langDropdown">
+                            <a href="#" class="dropdown-item active">English (EN)</a>
+                            <a href="#" class="dropdown-item">Deutsch (DE)</a>
+                            <a href="#" class="dropdown-item">Français (FR)</a>
+                        </div>
+                    </div>
 
-    <script src="script.js"></script>
+                    <button class="theme-toggle" id="themeToggle" aria-label="Toggle Light/Dark System Theme">
+                        <i class="fa-solid fa-moon"></i>
+                    </button>
 
+                    <div class="nav-dropdown-wrapper notification-center">
+                        <button class="nav-action-btn" id="notificationBtn" aria-label="View System Notifications">
+                            <i class="fa-solid fa-bell"></i>
+                            <span class="notification-badge"></span>
+                        </button>
+                        <div class="dropdown-menu wide-dropdown" id="notificationDropdown">
+                            <div class="dropdown-header">System Insights</div>
+                            <div class="notification-list">
+                                <div class="noti-item unread">
+                                    <i class="fa-solid fa-bolt noti-icon-match"></i>
+                                    <div class="noti-body">
+                                        <p>New high-match DevOps role found in Munich matching your visa tier preference.</p>
+                                        <span>2 minutes ago</span>
+                                    </div>
+                                    <span class="unread-dot"></span>
+                                </div>
+                                <div class="noti-item">
+                                    <i class="fa-solid fa-passport noti-icon-visa"></i>
+                                    <div class="noti-body">
+                                        <p>Germany introduces updated fast-track parameters for Opportunity Card holders.</p>
+                                        <span>1 hour ago</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nav-dropdown-wrapper profile-center">
+                        <div class="user-profile" id="profileDropdownBtn">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&q=80" alt="User Profile Identity Dashboard Card" class="avatar">
+                            <i class="fa-solid fa-chevron-down profile-caret"></i>
+                        </div>
+                        <div class="dropdown-menu" id="profileDropdown">
+                            <div class="profile-summary">
+                                <p class="user-name">Alex Mercer</p>
+                                <p class="user-tier">Premium Active Search Tier</p>
+                            </div>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item"><i class="fa-solid fa-user"></i> My Identity Profile</a>
+                            <a href="#" class="dropdown-item"><i class="fa-solid fa-sliders"></i> Metric Preferences</a>
+                            <hr class="dropdown-divider">
+                            <a href="#" class="dropdown-item text-danger"><i class="fa-solid fa-power-off"></i> Disconnect Access</a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <main class="dashboard-viewport">
+                
+                <section class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                        <div class="stat-info">
+                            <h3>AI System Matches</h3>
+                            <p class="stat-value dynamic-counter" data-target="142">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-paper-plane"></i></div>
+                        <div class="stat-info">
+                            <h3>Applications Routed</h3>
+                            <p class="stat-value dynamic-counter" data-target="28">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-building-user"></i></div>
+                        <div class="stat-info">
+                            <h3>Active Interview Nodes</h3>
+                            <p class="stat-value dynamic-counter" data-target="5">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <div class="stat-info">
+                            <h3>Visa Success Probability</h3>
+                            <p class="stat-value dynamic-counter" data-target="94" data-suffix="%">0</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="search-section">
+                    <div class="search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="jobSearch" placeholder="Search destinations, roles, or visa-sponsor keywords globally...">
+                    </div>
+                </section>
+
+                <div class="dashboard-split-layout">
+                    <section class="dashboard-section glass-panel map-container-panel">
+                        <h2 class="section-title"><i class="fa-solid fa-map-location-dot"></i> Schengen Zone Market Density Map</h2>
+                        <div class="map-placeholder-graphic">
+                            <div class="map-overlay-message">
+                                <i class="fa-solid fa-earth-europe map-pulse-icon"></i>
+                                <p>Interactive Geographic Heatmap Grid Active</p>
+                                <span class="map-coordinates-label">Tracking 27 Schengen Border Points & Blue Card Pools</span>
+                            </div>
+                            <div class="map-node node-1 active-pulse"></div>
+                            <div class="map-node node-2 active-pulse"></div>
+                            <div class="map-node node-3 active-pulse"></div>
+                        </div>
+                    </section>
+
+                    <section class="dashboard-section glass-panel latest-jobs-panel">
+                        <div class="section-header-row">
+                            <h2 class="section-title"><i class="fa-solid fa-clock-rotate-left"></i> Latest Telemetry Job Streams</h2>
+                            <span class="panel-pill-status">Realtime Sync</span>
+                        </div>
+                        <div class="job-stream-list">
+                            <div class="job-stream-card">
+                                <div class="job-meta-top">
+                                    <span class="company-tag">ASML</span>
+                                    <span class="time-stamp-badge">Just now</span>
+                                </div>
+                                <h4>Senior Embedded Systems Specialist</h4>
+                                <p class="job-location-details"><i class="fa-solid fa-location-dot"></i> Eindhoven, Netherlands</p>
+                                <div class="job-incentives-row">
+                                    <span class="incentive-pill"><i class="fa-solid fa-passport"></i> Sponsorship Confirmed</span>
+                                    <span class="incentive-pill"><i class="fa-solid fa-money-bill-wave"></i> Relocation Bonus</span>
+                                </div>
+                            </div>
+
+                            <div class="job-stream-card">
+                                <div class="job-meta-top">
+                                    <span class="company-tag">SAP Labs</span>
+                                    <span class="time-stamp-badge">14m ago</span>
+                                </div>
+                                <h4>AI Infrastructure Architect (Blue Card Tier)</h4>
+                                <p class="job-location-details"><i class="fa-solid fa-location-dot"></i> Walldorf, Germany</p>
+                                <div class="job-incentives-row">
+                                    <span class="incentive-pill"><i class="fa-solid fa-passport"></i> Fast Track Process</span>
+                                    <span class="incentive-pill"><i class="fa-solid fa-language"></i> EN Speaking Environment</span>
+                                </div>
+                            </div>
+
+                            <div class="job-stream-card">
+                                <div class="job-meta-top">
+                                    <span class="company-tag">Stripe</span>
+                                    <span class="time-stamp-badge">1h ago</span>
+                                </div>
+                                <h4>Principal Frontend Systems Engineer</h4>
+                                <p class="job-location-details"><i class="fa-solid fa-location-dot"></i> Dublin, Ireland</p>
+                                <div class="job-incentives-row">
+                                    <span class="incentive-pill"><i class="fa-solid fa-passport"></i> Full Visa Assistance</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+
+                <section class="dashboard-section">
+                    <h2 class="section-title"><i class="fa-solid fa-flag-usa"></i> Top High-Intent Visa-Sponsoring Countries</h2>
+                    <div class="countries-grid">
+                        <div class="country-card" data-name="germany">
+                            <div class="country-header">
+                                <span class="flag">🇩🇪</span>
+                                <h3>Germany</h3>
+                            </div>
+                            <p class="country-meta">Opportunity Card implementation and streamlined Blue Card framework hubs.</p>
+                            <div class="country-footer">
+                                <span class="visa-badge-status status-high">High Openings Volume</span>
+                                <span class="visa-badge">Easy Pathway Visa</span>
+                            </div>
+                        </div>
+                        <div class="country-card" data-name="netherlands">
+                            <div class="country-header">
+                                <span class="flag">🇳🇱</span>
+                                <h3>Netherlands</h3>
+                            </div>
+                            <p class="country-meta">Highly skilled migrant tax exemptions with rapid executive sponsorship pipelines.</p>
+                            <div class="country-footer">
+                                <span class="visa-badge-status status-optimal">Optimal Compensation</span>
+                                <span class="visa-badge">High Salary</span>
+                            </div>
+                        </div>
+                        <div class="country-card" data-name="ireland">
+                            <div class="country-header">
+                                <span class="flag">🇮🇪</span>
+                                <h3>Ireland</h3>
+                            </div>
+                            <p class="country-meta">EMEA Tech headquarters network operating comprehensive English native working conditions.</p>
+                            <div class="country-footer">
+                                <span class="visa-badge-status status-medium">Steady Demand Matrix</span>
+                                <span class="visa-badge">English Speaking</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="dashboard-section">
+                    <h2 class="section-title"><i class="fa-solid fa-layer-group"></i> In-Demand Industry AI Focus Categories</h2>
+                    <div class="categories-grid">
+                        <div class="category-card" data-category="tech">
+                            <i class="fa-solid fa-code category-icon"></i>
+                            <h3>Software Engineering</h3>
+                            <p>Fullstack Core, Resilient DevOps infrastructure, Architecture</p>
+                        </div>
+                        <div class="category-card" data-category="data">
+                            <i class="fa-solid fa-brain category-icon"></i>
+                            <h3>Data Science & AI Systems</h3>
+                            <p>Deep Machine Learning models, Production NLP, Analytical Pipelines</p>
+                        </div>
+                        <div class="category-card" data-category="healthcare">
+                            <i class="fa-solid fa-heart-pulse category-icon"></i>
+                            <h3>Healthcare Informatics</h3>
+                            <p>Bioinformatics Engineering, Modern Clinical Platform Researchers</p>
+                        </div>
+                        <div class="category-card" data-category="product">
+                            <i class="fa-solid fa-cubes category-icon"></i>
+                            <h3>Product Optimization</h3>
+                            <p>Cross-Functional Strategy Managers, UX Interaction Designers</p>
+                        </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+<script src="script.js"></script>
 </body>
 </html>
