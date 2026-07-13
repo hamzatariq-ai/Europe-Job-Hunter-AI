@@ -169,3 +169,29 @@ function initLiveSearchFilters() {
         });
     });
 }
+async function loadJobs() {
+    const jobsContainer = document.getElementById("jobs-container");
+
+    if (!jobsContainer) return;
+
+    const response = await fetch("http://127.0.0.1:8000/jobs");
+    const jobs = await response.json();
+
+    jobsContainer.innerHTML = "";
+
+    jobs.forEach(job => {
+        jobsContainer.innerHTML += `
+        <div class="job-card">
+            <h3>${job.title}</h3>
+            <p><strong>Country:</strong> ${job.country}</p>
+            <p><strong>Salary:</strong> ${job.salary}</p>
+            <p><strong>Visa:</strong> ${job.visa}</p>
+            <a href="apply.html?id=${job.id}">
+                <button>Apply Now</button>
+            </a>
+        </div>
+        `;
+    });
+}
+
+loadJobs();
