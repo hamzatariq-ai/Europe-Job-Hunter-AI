@@ -174,24 +174,32 @@ async function loadJobs() {
 
     if (!jobsContainer) return;
 
-    const response = await fetch("http://127.0.0.1:8000/jobs");
-    const jobs = await response.json();
+const response = await fetch("http://127.0.0.1:8000/live-jobs");
+const result = await response.json();
 
-    jobsContainer.innerHTML = "";
+console.log(result);
 
-    jobs.forEach(job => {
-        jobsContainer.innerHTML += `
-        <div class="job-card">
-            <h3>${job.title}</h3>
-            <p><strong>Country:</strong> ${job.country}</p>
-            <p><strong>Salary:</strong> ${job.salary}</p>
-            <p><strong>Visa:</strong> ${job.visa}</p>
-            <a href="apply.html?id=${job.id}">
-                <button>Apply Now</button>
-            </a>
-        </div>
-        `;
-    });
+const jobs = result.data;
+
+jobsContainer.innerHTML = "";
+
+jobs.forEach(job => {
+    jobsContainer.innerHTML += `
+    <div class="job-card">
+        <h3>${job.title}</h3>
+
+        <p><strong>Company:</strong> ${job.company_name}</p>
+
+        <p><strong>Location:</strong> ${job.location}</p>
+
+        <p><strong>Remote:</strong> ${job.remote ? "Yes" : "No"}</p>
+
+        <a href="${job.url}" target="_blank">
+            <button>Apply Now</button>
+        </a>
+    </div>
+    `;
+});
 }
 
 loadJobs();

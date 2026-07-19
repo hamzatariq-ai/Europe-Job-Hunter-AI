@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin Panel</title>
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+body{
+    font-family:Arial,sans-serif;
+    background:#f4f6fb;
+}
+
+.container{
+    max-width:600px;
+    margin:40px auto;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 5px 20px rgba(0,0,0,.1);
+}
+
+input{
+    width:100%;
+    padding:12px;
+    margin:10px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    box-sizing:border-box;
+}
+
+button{
+    width:100%;
+    padding:14px;
+    background:#4f46e5;
+    color:white;
+    border:none;
+    border-radius:8px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#3730a3;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Add New Job</h2>
+
+<form id="jobForm">
+
+<input id="title" placeholder="Job Title" required>
+
+<input id="country" placeholder="Country" required>
+
+<input id="salary" placeholder="Salary" required>
+
+<input id="visa" placeholder="Visa Status" required>
+
+<button type="submit">Add Job</button>
+
+</form>
+
+</div>
+
+<script src="admin.js"></script>
+
+</body>
+</html>
