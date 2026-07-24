@@ -1,4 +1,6 @@
 import requests
+from fastapi import UploadFile, File
+import pdfplumber
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
@@ -141,3 +143,23 @@ def live_jobs():
     data = response.json()
 
     return data
+
+@app.post("/upload-resume")
+async def upload_resume(file: UploadFile = File(...)):
+
+    with open(file.filename, "wb") as buffer:
+        buffer.write(await file.read())
+
+    text = ""
+
+    with pdfplumber.open(file.filename) as pdf:
+        for page in pdf.pages:
+            page_text = page.extract_text()
+
+            if page_text:
+                text += page_text + "\n"
+
+    return {
+        "message": "Resume Uploaded Successfully",
+        "resume_text": text
+    }

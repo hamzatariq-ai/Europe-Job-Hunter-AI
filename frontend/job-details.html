@@ -75,74 +75,63 @@
 
 <div class="job-container">
 
-<h1 class="job-title">
-🇩🇪 Warehouse Worker
-</h1>
+<h1 class="job-title" id="title"></h1>
 
-<p class="company">
-ABC Logistics • Berlin, Germany
-</p>
+<p class="company" id="company"></p>
 
 <div class="info">
 
 <div class="box">
-<b>Salary</b><br>
-€2500 / Month
+<b>Location</b><br>
+<span id="location"></span>
 </div>
 
 <div class="box">
-<b>Visa Sponsorship</b><br>
-✅ Available
-</div>
-
-<div class="box">
-<b>Accommodation</b><br>
-✅ Free
-</div>
-
-<div class="box">
-<b>Experience</b><br>
-Not Required
-</div>
-
-<div class="box">
-<b>Language</b><br>
-Basic English
-</div>
-
-<div class="box">
-<b>Working Hours</b><br>
-8 Hours / Day
+<b>Remote</b><br>
+<span id="remote"></span>
 </div>
 
 </div>
 
 <h2>Job Description</h2>
 
-<p>
-We are looking for Warehouse Workers in Germany.
-Packing, loading, unloading and scanning parcels.
-Training will be provided.
-</p>
+<div id="description"></div>
 
-<h2>Requirements</h2>
-
-<ul>
-<li>Age 18-45</li>
-<li>Passport</li>
-<li>Good Health</li>
-<li>Basic English</li>
-</ul>
-
-<a class="back-btn" href="job-matcher.html">
+<a class="back-btn" href="jobs.html">
 ⬅ Back
 </a>
 
-<a class="apply-btn" href="apply.html">
+<a class="apply-btn" id="applyLink" target="_blank">
 Apply Now
 </a>
 
 </div>
+
+<script>
+
+const slug = new URLSearchParams(window.location.search).get("slug");
+
+fetch("http://127.0.0.1:8000/live-jobs")
+.then(res => res.json())
+.then(data => {
+
+const job = data.data.find(j => j.slug === slug);
+
+if(!job){
+    alert("Job not found");
+    return;
+}
+
+document.getElementById("title").innerText = job.title;
+document.getElementById("company").innerText = job.company_name;
+document.getElementById("location").innerText = job.location;
+document.getElementById("remote").innerText = job.remote ? "Yes" : "No";
+document.getElementById("description").innerHTML = job.description;
+document.getElementById("applyLink").href = job.url;
+
+});
+
+</script>
 
 </body>
 </html>

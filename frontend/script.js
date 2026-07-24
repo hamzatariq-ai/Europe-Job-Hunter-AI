@@ -184,8 +184,10 @@ const jobs = result.data;
 jobsContainer.innerHTML = "";
 
 jobs.forEach(job => {
+
     jobsContainer.innerHTML += `
     <div class="job-card">
+
         <h3>${job.title}</h3>
 
         <p><strong>Company:</strong> ${job.company_name}</p>
@@ -194,12 +196,59 @@ jobs.forEach(job => {
 
         <p><strong>Remote:</strong> ${job.remote ? "Yes" : "No"}</p>
 
-        <a href="${job.url}" target="_blank">
-            <button>Apply Now</button>
+        <a href="job-details.html?slug=${job.slug}">
+            <button>View Details</button>
         </a>
+
+        <button onclick="saveJob('${job.slug}')">
+            ❤️ Save Job
+        </button>
+
     </div>
     `;
 });
 }
 
 loadJobs();
+
+const search = document.getElementById("jobSearch");
+const countryFilter = document.getElementById("countryFilter");
+
+function filterJobs() {
+
+    const searchValue = search.value.toLowerCase();
+    const countryValue = countryFilter.value.toLowerCase();
+
+    document.querySelectorAll(".job-card").forEach(card => {
+
+        const text = card.innerText.toLowerCase();
+
+        const matchSearch = text.includes(searchValue);
+        const matchCountry = countryValue === "" || text.includes(countryValue);
+
+        if (matchSearch && matchCountry) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+
+    });
+
+}
+
+search.addEventListener("keyup", filterJobs);
+countryFilter.addEventListener("change", filterJobs);
+
+function saveJob(slug){
+
+    let savedJobs = JSON.parse(localStorage.getItem("savedJobs")) || [];
+
+    if(!savedJobs.includes(slug)){
+        savedJobs.push(slug);
+        localStorage.setItem("savedJobs", JSON.stringify(savedJobs));
+        alert("Job Saved ❤️");
+    }else{
+        alert("Already Saved");
+    }
+
+}

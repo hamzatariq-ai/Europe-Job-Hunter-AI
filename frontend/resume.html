@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Resume Upload</title>
+</head>
+<body>
+
+<h2>Resume Upload Test</h2>
+
+<input type="file" id="resumeFile" accept=".pdf">
+
+<button type="button" id="uploadBtn">
+Upload Resume
+</button>
+
+<hr>
+
+<div id="result"></div>
+
+<script>
+
+document.getElementById("uploadBtn").onclick = async function(e){
+
+    e.preventDefault();
+
+    const file=document.getElementById("resumeFile").files[0];
+
+    if(!file){
+        alert("Select PDF");
+        return;
+    }
+
+    const formData=new FormData();
+    formData.append("file",file);
+
+    try{
+
+        const response=await fetch("http://127.0.0.1:8000/upload-resume",{
+            method:"POST",
+            body:formData
+        });
+
+        const data=await response.json();
+
+        document.getElementById("result").innerHTML=
+        "<pre>"+data.resume_text+"</pre>";
+
+    }
+
+    catch(err){
+
+        alert(err);
+
+        console.log(err);
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
